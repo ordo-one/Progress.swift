@@ -78,7 +78,12 @@ public struct ProgressPercent: ProgressElementType {
         if progressBar.count > 0 {
             percentDone = Double(progressBar.index) / Double(progressBar.count) * 100
         }
-        return "\(percentDone.format(decimalPlaces))%"
+
+        var padded = "\(percentDone.format(decimalPlaces))%"
+        while padded.count < 4 {
+            padded = " " + padded
+        }
+        return padded // "\(percentDone.format(decimalPlaces))%"
     }
 }
 
