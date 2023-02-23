@@ -99,7 +99,7 @@ public struct ProgressTimeEstimates: ProgressElementType {
         
         let estimatedTimeRemainingString = formatDuration(estimatedTimeRemaining)
         
-        return "ETA: \(estimatedTimeRemainingString) (at \(itemsPerSecond.format(2))) it/s)"
+        return "ETA: \(estimatedTimeRemainingString)"
     }
     
     fileprivate func formatDuration(_ duration: Double) -> String {
