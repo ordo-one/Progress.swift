@@ -99,9 +99,13 @@ public struct ProgressTimeEstimates: ProgressElementType {
         var estimatedTimeRemaining = 0.0
         if progressBar.index > 0 {
             itemsPerSecond = Double(progressBar.index) / totalTime
-            estimatedTimeRemaining = Double(progressBar.count - progressBar.index) / itemsPerSecond
+            estimatedTimeRemaining = (Double(progressBar.count - progressBar.index) / itemsPerSecond) + 1.0
         }
-        
+
+        if progressBar.index >= progressBar.count {
+            estimatedTimeRemaining = 0.0
+        }
+
         let estimatedTimeRemainingString = formatDuration(estimatedTimeRemaining)
         
         return "ETA: \(estimatedTimeRemainingString)"
